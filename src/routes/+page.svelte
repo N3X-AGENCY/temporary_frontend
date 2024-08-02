@@ -84,7 +84,7 @@
         </p>
         <div class="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
           <div class="rounded-md shadow">
-            <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-black hover:bg-black/80 transition duration-300 ease-in-out md:py-4 md:text-lg md:px-10">
+            <a href="mailto:contact@n3x.agency" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-black hover:bg-black/80 transition duration-300 ease-in-out md:py-4 md:text-lg md:px-10">
 				<span class="flex gap-2.5 items-center justify-center "> <svg class="h-8 w-8 " xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" >
 					<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2">
 						<rect width="18" height="14" x="3" y="5" stroke-dasharray="64" stroke-dashoffset="64" rx="1">

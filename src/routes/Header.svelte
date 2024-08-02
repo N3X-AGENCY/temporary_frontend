@@ -186,7 +186,7 @@
             </a>
           </li> -->
           <li>
-            <a href="javascript:void(0)" class="block py-3 px-4 font-medium text-center text-white bg-black hover:bg-black/60 active:bg-black/60 active:shadow-none rounded-lg shadow ">
+            <a  href="mailto:contact@n3x.agency" class="block py-3 px-4 font-medium text-center text-white bg-black hover:bg-black/60 active:bg-black/60 active:shadow-none rounded-lg shadow ">
 				 <span class="flex gap-2.5 items-center justify-center "> <svg class="h-5 w-5 " xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" >
 					<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2">
 						<rect width="18" height="14" x="3" y="5" stroke-dasharray="64" stroke-dashoffset="64" rx="1">
