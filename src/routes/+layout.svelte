@@ -1,6 +1,8 @@
 <script>
+	import '@unocss/reset/tailwind.css'
+	import 'virtual:uno.css';
 	import Header from './Header.svelte';
-	import '../app.css';
+
 </script>
 
 <div class="app">
