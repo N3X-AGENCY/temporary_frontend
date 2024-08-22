@@ -34,11 +34,11 @@
 
 </script>
 
-<div class="flex">
+<div class="flex ">
   <select
     bind:value={selectedCountry}
-    onchange={()=>OnSelect(formattedValue)}
-    class="bg-black bg-opacity-20 border border-white border-opacity-10 rounded-l-sm px-2 py-3 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30 text-white transition-all duration-200"
+    on:change={() => OnSelect(formattedValue)}
+    class="w-1/3 bg-black bg-opacity-20 border border-white border-opacity-10 rounded-l-sm px-2 py-3 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30 text-white transition-all duration-200"
   >
     {#each countries as country}
       <option value={country}>
@@ -48,9 +48,9 @@
   </select>
   <input
     type="tel"
-    onchange={()=>OnSelect(formattedValue)}
+    on:input={() => OnSelect(formattedValue)}
     bind:value={phoneNumber}
     placeholder="Phone number"
-    class="flex-grow bg-black bg-opacity-20 border border-white border-opacity-10 rounded-r-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30 text-white transition-all duration-200"
+    class="w-2/3 bg-black bg-opacity-20 border border-white border-opacity-10 rounded-r-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30 text-white transition-all duration-200"
   />
 </div>

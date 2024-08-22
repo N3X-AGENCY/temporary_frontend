@@ -169,7 +169,7 @@
       {/if}
 
       <div id="prenom_nom">
-        <label for="prenom_nom" class="block mb-3 text-opacity-80 text-white">Prénom & Nom</label>
+        <label for="prenom_nom" class="block mb-3 text-opacity-80 text-xl  font-semibold text-white">Prénom & Nom</label>
         <input name="prenom_nom" type="text" id="prenom_nom" bind:value={prenom_nom} 
           class="w-full bg-black bg-opacity-20 border border-white border-opacity-10 rounded-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30 text-white transition-all duration-200">
         {#if erreurs.prenom_nom}
@@ -178,7 +178,7 @@
       </div>
 
       <div id="email">
-        <label for="email" class="block mb-3 text-opacity-80 text-white">Email</label>
+        <label for="email" class="block mb-3 text-opacity-80 text-xl  font-semibold text-white">Email</label>
         <input name="email" type="email" id="email" bind:value={email} 
           class="w-full bg-black bg-opacity-20 border border-white border-opacity-10 rounded-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30 text-white transition-all duration-200">
         {#if erreurs.email}
@@ -186,16 +186,17 @@
         {/if}
       </div>
 
-      <div id="telephone">
-        <label for="telephone" class="block mb-3 text-opacity-80 text-white">Téléphone</label>
-        <PhoneSelector bind:value={telephone} OnSelect={handlePhoneSelect} />
+      <div class="" id="telephone">
+        <label for="telephone" class="block mb-3 text-opacity-80 text-xl  font-semibold text-white">Téléphone</label>
+        <input name="telephone" type="tel" id="telephone" bind:value={telephone} class="hidden">
+        <PhoneSelector value={telephone} OnSelect={handlePhoneSelect} />
         {#if erreurs.telephone}
           <p class="text-red-500 mt-1">{erreurs.telephone}</p>
         {/if}
       </div>
 
       <div id="date">
-        <label class="block mb-3 text-opacity-80 text-white">Date</label>
+        <label class="block mb-3 text-opacity-80 text-xl  font-semibold text-white">Date</label>
         <input name="date" type="text" class="hidden" bind:value={dateSelectionnee}>
         <Calendar bind:selectedDate={dateSelectionnee} />
         {#if erreurs.date}
@@ -204,7 +205,7 @@
       </div>
 
       <div id="heure">
-        <label class="block mb-3 text-opacity-80 text-white">Heure</label>
+        <label class="block mb-3 text-opacity-80 text-xl  font-semibold text-white">Heure</label>
         <input name="heure" type="text" class="hidden" bind:value={heureSelectionnee}>
         <TimePicker bind:selectedTime={heureSelectionnee} bind:selectedDate={dateSelectionnee} />
         {#if erreurs.heure}
@@ -213,7 +214,7 @@
       </div>
 
       <div id="raison">
-        <label for="raison" class="block mb-3 text-opacity-80 text-white">Raison de l'appel</label>
+        <label for="raison" class="block mb-3 text-opacity-80 text-xl  font-semibold text-white">Raison de l'appel</label>
         <input name="raison" type="text" id="raison" class="hidden" bind:value={raisonAppel}>
         <ReasonSelector OnSelect={gererSelectionRaison} />
         {#if erreurs.raison}

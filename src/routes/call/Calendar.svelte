@@ -95,16 +95,16 @@
   }
 </script>
 
-<div class="bg-black bg-opacity-20 border border-white border-opacity-10 rounded-sm p-6" in:fade={{duration: 200}}>
-  <div class="flex justify-between mb-6 text-white">
-    <button type="button" on:click={prevMonth} class="text-white text-opacity-60 hover:text-opacity-100 transition-opacity duration-200">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<div class="bg-black bg-opacity-20 border border-white border-opacity-10 rounded-sm p-4 sm:p-6" in:fade={{duration: 200}}>
+  <div class="flex justify-between mb-4 sm:mb-6 text-white">
+    <button type="button" on:click={prevMonth} class="text-white text-opacity-60 hover:text-opacity-100 transition-opacity duration-200 p-2 sm:p-3">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-8 sm:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
       </svg>
     </button>
     <select
       on:change={handleMonthYearChange}
-      class="bg-black bg-opacity-20 border border-white border-opacity-10 rounded-sm px-2 py-1 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30 text-white transition-all duration-200"
+      class="bg-black bg-opacity-20 border border-white border-opacity-10 rounded-sm px-2 py-1 text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30 text-white transition-all duration-200"
     >
       {#each years as year}
         {#each months as month, index}
@@ -114,31 +114,31 @@
         {/each}
       {/each}
     </select>
-    <button type="button" on:click={nextMonth} class="text-white text-opacity-60 hover:text-opacity-100 transition-opacity duration-200">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <button type="button" on:click={nextMonth} class="text-white text-opacity-60 hover:text-opacity-100 transition-opacity duration-200 p-2 sm:p-3">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-8 sm:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
       </svg>
     </button>
   </div>
-  <div class="relative overflow-hidden" style="height: {7 * 40}px;">
+  <div class="relative overflow-hidden" style="height: {7 * 3}rem;">
     {#key currentMonth}
       <div 
         class="absolute w-full"
         in:fly={{x: direction * 100, duration: 300, easing: quintOut}}
         out:fly={{x: direction * -100, duration: 300, easing: quintOut}}
       >
-        <div class="grid grid-cols-7 gap-2">
+        <div class="grid grid-cols-7 gap-2 sm:gap-3">
           {#each ['Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa', 'Di'] as day}
-            <div class="text-center text-sm text-white text-opacity-40">{day}</div>
+            <div class="text-center text-sm sm:text-base text-white text-opacity-40">{day}</div>
           {/each}
           {#each days as day}
             <button
               type="button"
               class={`
-                p-2 text-center rounded-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30 transition-all duration-200 relative
-                ${selectedDate?.toDateString() === day.toDateString() ? 'bg-white text-black' : 'text-white  hover:bg-white/40 '}
+                p-2 sm:p-3 text-center rounded-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30 transition-all duration-200 relative text-sm sm:text-base
+                ${selectedDate?.toDateString() === day.toDateString() ? 'bg-white text-black' : 'text-white hover:bg-white/40'}
                 ${day.getMonth() !== currentMonth.getMonth() ? 'text-opacity-50' : ''}
-                ${day.toDateString() === new Date().toDateString() ? 'border-2 border-blue-500' : ''}
+                ${day.toDateString() === new Date().toDateString() ? 'border border-blue-500' : ''}
                 ${isDateBlacklisted(day) ? 'opacity-50 cursor-not-allowed' : ''}
               `}
               on:click={() => selectDate(day)}
@@ -146,7 +146,7 @@
             >
               {day.getDate()}
               {#if day.toDateString() === new Date().toDateString()}
-                <span class="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-blue-500 rounded-full"></span>
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-blue-500 rounded-full"></span>
               {/if}
             </button>
           {/each}
@@ -154,5 +154,5 @@
       </div>
     {/key}
   </div>
-  <div class="text-white text-opacity-40 mt-5">NUI 1.2.8 - Calendar</div>
+  <div class="text-white text-opacity-40 mt-4 sm:mt-6 text-sm sm:text-base">NUI 1.2.8 - Calendar</div>
 </div>

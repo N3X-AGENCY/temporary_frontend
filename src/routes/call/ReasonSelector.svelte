@@ -25,15 +25,15 @@
 </script>
 
 <div class="bg-black bg-opacity-20 border border-white border-opacity-10 rounded-sm p-6" in:fade={{duration: 200}}>
-  <h3 class="text-lg font-semibold mb-4 text-white">À quel sujet ?</h3>
-  <div class="grid grid-cols-3 gap-3 mb-6">
+  <h3 class="text-2xl font-semibold mb-4 text-white">À quel sujet ?</h3>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
     {#each Object.keys(categories) as category}
       <button
         type="button"
-        class="bg-white/10 rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30 text-white transition-all duration-200"
-        class:bg-white={selectedCategory === category}
-        class:bg-opacity-20={selectedCategory === category}
-        class:text-black={selectedCategory === category}
+        class="{
+          selectedCategory === category ? 'bg-white text-black' : 'bg-white/10'
+        } rounded-lg p-3 text-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30 tansition-all duration-200"
+       
         class:hover:bg-white={selectedCategory !== category}
         class:hover:bg-opacity-10={selectedCategory !== category}
         on:click={() => selectCategory(category)}
