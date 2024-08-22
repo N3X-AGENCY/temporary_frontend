@@ -37,6 +37,7 @@
   "type": "module",
   "dependencies": {
     "@tailwindcss/vite": "^4.0.0-alpha.18",
+    "@xstate/svelte": "^3.0.3",
     "airtable": "^0.12.2",
     "canvas-confetti": "^1.9.3",
     "gsap": "^3.12.5",
