@@ -6,10 +6,11 @@
   import TimePicker from './TimePicker.svelte';
   import ReasonSelector from './ReasonSelector.svelte';
   import PhoneSelector from './PhoneSelector.svelte';
-  import { fade, crossfade } from 'svelte/transition';
-  import { quintOut } from 'svelte/easing';
+  import { fade } from 'svelte/transition';
   import confetti from 'canvas-confetti';
 	import { enhance } from '$app/forms';
+  import { gsap } from 'gsap';
+  import { Flip } from 'gsap/Flip';
 
   let dateSelectionnee = $state<Date | null>(null);
   let heureSelectionnee = $state('');
@@ -20,13 +21,6 @@
 
   let defilementY = $state(0);
   let hauteurFormulaire = $state(0);
-
-  const [envoyer, recevoir] = crossfade({
-    duration: 300,
-    easing: quintOut
-  });
-
-  const estCollant = $derived(defilementY > hauteurFormulaire);
 
   let etatFormulaire = $state('remplissage');
   let erreurs = $state<Record<string, string>>({});
@@ -62,10 +56,41 @@
 
   const { snapshot, send: envoyerAMachine } = useMachine(machineFormulaire);
 
+  let titleElement: HTMLElement | null = $state(null);
+  let titleContainer: HTMLElement | null = $state(null);
+
+  gsap.registerPlugin(Flip);
+
   onMount(() => {
     document.documentElement.style.scrollBehavior = 'smooth';
     hauteurFormulaire = document.querySelector('form')?.offsetTop ?? 0;
   });
+
+  $effect(() => {
+    if (titleElement && titleContainer) {
+      const state = Flip.getState(titleElement);
+      
+      if (estCollant) {
+        titleContainer.appendChild(titleElement);
+      } else {
+        document.querySelector('form')?.insertAdjacentElement('afterbegin', titleElement);
+      }
+
+      Flip.from(state, {
+        duration: 0.5,
+        ease: 'power2.inOut',
+        onComplete: () => {
+          gsap.to(titleElement, { 
+            opacity: estCollant ? 1 : 0.7, 
+            duration: 0.0,
+            ease: 'power2.inOut'
+          });
+        }
+      });
+    }
+  });
+
+  const estCollant = $derived(defilementY > hauteurFormulaire);
 
   function gererSelectionRaison({
     category,
@@ -120,8 +145,8 @@
 <div class="min-h-screen bg-black text-white p-12" in:fade={{duration: 300}}>
   {#if estCollant}
     <div class="fixed top-0 left-0 right-0 z-50 bg-black/20 border-b backdrop-blur-md border-white/20 transition-all duration-200 py-4 px-4">
-      <div class="max-w-lg mx-auto">
-        <h1 class="text-3xl font-bold text-white" in:recevoir={{key: 'titre'}} out:envoyer={{key: 'titre'}}>Réserver un Appel</h1>
+      <div class="max-w-lg mx-auto" bind:this={titleContainer}>
+        <!-- Title will be moved here when sticky -->
       </div>
     </div>
   {/if}
@@ -163,10 +188,8 @@
       }
 
       // Don't call update() as we're handling the submission manually
-    }} transition:fade={{duration: 200}} class="max-w-lg mx-auto space-y-8 relative pt-16">
-      {#if !estCollant}
-        <h1 class="text-3xl font-bold text-white mb-8" in:recevoir={{key: 'titre'}} out:envoyer={{key: 'titre'}}>Réserver un Appel</h1>
-      {/if}
+    }} class="max-w-lg mx-auto space-y-8 relative pt-16">
+      <h1 bind:this={titleElement} class="text-3xl font-bold text-white ">Réserver un Appel</h1>
 
       <div id="prenom_nom">
         <label for="prenom_nom" class="block mb-3 text-opacity-80 text-xl  font-semibold text-white">Prénom & Nom</label>

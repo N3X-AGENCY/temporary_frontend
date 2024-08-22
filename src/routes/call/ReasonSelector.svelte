@@ -50,7 +50,7 @@
         {#each categories[selectedCategory as keyof typeof categories] as subcategory}
           <button
             type="button"
-            class=" rounded-lg p-3 text-sm {selectedSubcategory === subcategory ? 'bg-white text-black' : 'bg-white/10'} focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30 text-white transition-all duration-200"
+            class=" rounded-lg p-3 text-sm {selectedSubcategory === subcategory ? 'bg-white text-black' : 'bg-white/10 text-white'} focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30 transition-all duration-200"
            
             class:text-black={selectedSubcategory === subcategory}
             class:hover:bg-white={selectedSubcategory !== subcategory}

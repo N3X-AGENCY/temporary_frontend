@@ -6,6 +6,7 @@ import { imagetools } from 'vite-imagetools';
 export default defineConfig({
 	plugins: [sveltekit(), UnoCSS(), imagetools()],
 	ssr: {
-		noExternal: ['@xstate/svelte']
+		noExternal: ['@xstate/svelte', 'gsap'],
+		external: ['gsap/flip']
 	}
 });
