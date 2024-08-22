@@ -43,7 +43,8 @@
     "install": "^0.13.0",
     "motion": "^10.18.0",
     "tailwindcss": "^4.0.0-alpha.18",
-    "vite-imagetools": "^7.0.4"
+    "vite-imagetools": "^7.0.4",
+    "xstate": "^5.17.4"
   },
   "trustedDependencies": [
     "@sveltejs/kit",
